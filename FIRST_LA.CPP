@@ -1,0 +1,37 @@
+/*******************************************
+Statement - Print Hello World
+Programmer - Vineet Choudhary
+Written For - http://developerinsider.in
+********************************************/
+
+#include <stdio.h>
+#include <conio.h>
+
+void main()
+{
+	unsigned char a;
+	int i,k;
+	float b;
+	clrscr();
+	scanf("%c",&a);
+	for(i=0; i<8; i++){
+		printf("%d",i);
+		}
+
+	printf("\n");
+
+	for (i=0;i<8;i++){
+		printf("%d", (a>>i)&1);
+		}
+
+	scanf("%f",&b);
+
+	printf("%f", b%10);
+
+
+
+
+
+
+	getch();
+}
