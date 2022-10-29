@@ -5,11 +5,9 @@
 void scroll(int direction, char l_row, char l_col, char r_row, char r_col, char attr){
 	union REGS r;
 	if(direction){
-	r.h.al = 1;
 	r.h.ah = 7;
 	}
 	else{
-	r.h.al = 0;
 	r.h.ah = 6;
 	}
 	r.h.al = attr;

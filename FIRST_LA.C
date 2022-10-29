@@ -63,7 +63,7 @@ void c_change(int count_bits, int high_bit,unsigned char *c){
         else {
             *c = *c &(~(1 << high_bit));
         }
-        high_bit++;
+        high_bit--;
     }
 
 }
@@ -73,12 +73,16 @@ void f_change(int count_bits, int high_bit,long *l){
         printf("Enter vlue of %d bit: ", high_bit);
         correct_i_input(&current_bit);
         if (current_bit == 1) {
+            printf("\n1\n");
             *l |= (1 << high_bit);
         }
         else {
-            *l = *l &(~(1 << high_bit));
+            printf("\n0\n");
+            *l &=  (~(1 << high_bit));
         }
+        printf(" current_value:  %d \n",(*l>>high_bit)&1);
         high_bit++;
+        
     }
 }
 
@@ -97,7 +101,8 @@ int main()
 	int choose, high_bit, count_bits;
 	float second_float;
 	long float2long;
-
+    clrscr();
+    printf("%d %d\n", sizeof(long), sizeof(float));
     while(1) {
        printf("Select the variable you want to work with(1 - unsigned char; 2 - float): ");
         correct_i_input(&choose);
@@ -116,7 +121,7 @@ int main()
             output_char(first_char);
 
             get_setup(&high_bit, &count_bits);
-            printf("T: %d, %d",high_bit, count_bits);
+
             c_change(count_bits, high_bit, &first_char);
 
             printf("\nNow char is \"%c\" \n", first_char);
@@ -138,7 +143,7 @@ int main()
             get_setup(&high_bit, &count_bits);
 
             f_change(count_bits, high_bit, &float2long);
-
+            second_float = *(float *) &float2long;
             printf("\n\n");
             printf("\nNow float is \"%f\" \n", second_float);
             output_float(float2long);
@@ -154,5 +159,6 @@ int main()
 
 
     }
+    getch();
 
 }
